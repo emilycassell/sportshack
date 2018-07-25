@@ -46,19 +46,25 @@
 </head>
 
 <body>
-    <p id="dothewave">Click here to do the wave</p>
     <svg width="500" height="300">  <!-- some SVG -->
 			<rect x="20" y="20" width="460" height="260" fill= "url(https://mdn.mozillademos.org/files/6457/mdn_logo_only_color.png)" height="200" width="200"/> 
 		</rect>
 		</svg>
     <circle></circle>
-    <ul id="seats">
-        <li id="seat_0"></li>
-        <li id="seat_1"></li>
-        <li id="seat_2"></li>
-        <li id="seat_3"></li>
-    </ul>
-    <a class="btn btn-default">Stand!</a>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div id="seat_0"></div>
+                <div id="seat_1"></div>
+                <div id="seat_2"></div>
+                <div id="seat_3"></div>
+            </div>
+        </div>
+        <div class="row">
+            <a class="btn btn-default"><i class="fa fa-male"></i> STAND UP</a>
+        </div>
+    </div>
+
     <!-- Page Scripts -->
     <script src="/controllers/home/app.js"></script>
     <script src="/controllers/home/default.js"></script>
