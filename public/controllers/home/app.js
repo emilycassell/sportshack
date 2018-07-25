@@ -37,6 +37,10 @@ $(document).ready(function() {
             });
         });
 
+        // Wire up standup button
+        $("#app_btn_stand").click(function() {
+            alert("standing!");
+        });
 
     } catch (err) {
         alert("An error occurred...");
