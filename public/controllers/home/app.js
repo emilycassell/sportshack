@@ -2,6 +2,7 @@
 var gl_sportshack = {
     id: null,
     participants: 0,
+    numSeats: 0,
     touchInterval: null
 };
 
@@ -19,11 +20,20 @@ function updateParticipantCount(newCount) {
     console.log("NewCount = " + newCount);
     gl_sportshack.participants = newCount;
     console.log("Received updated participant count: " + gl_sportshack.participants.toString());
-    $("#app_participant_count").text(gl_sportshack.participants.toString());
+    $("#app_participant_count").text(gl_sportshack.participants.toString() + " participants");
+}
+
+function updateSeatDisplay(newCount) {
+    console.log('[updateSeatDisplay] New seat count received: ' + newCount);
+    var seats = $('#seats').empty();
+    for (var loop = 0; loop < newCount; loop++) {
+        seats.append('<div id="seat_' + loop.toString() + '"></div>');
+        updateSeat(loop, false);
+    }
 }
 
 function touchServer(id) {
-    jQuery.ajax({
+    $.ajax({
         url: '/api/touch/' + id,
         dataType: 'json'
     }).done(function(response) {
@@ -74,11 +84,12 @@ $(document).ready(function() {
         });
 
         // Join the app, get an ID and a seat
-        jQuery.ajax({
+        $.ajax({
             url: '/api/join',
             dataType: 'json'
         }).done(function(response) {
             gl_sportshack.id = response.id;
+            gl_sportshack.numSeats = response.numSeats;
 
             // Ajax request completed
             console.log(response);
@@ -87,6 +98,9 @@ $(document).ready(function() {
             gl_sportshack.touchInterval = setInterval(function() {
                 touchServer(gl_sportshack.id);
             }, 5000);
+
+            // Update display of seats
+            updateSeatDisplay(gl_sportshack.numSeats);
         });
 
         // Wire up standup button

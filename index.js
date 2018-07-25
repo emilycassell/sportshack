@@ -6,6 +6,7 @@ var morgan = require('morgan');
 var admin = require('firebase-admin');
 var serviceAccount = require('./keys/sportshack-0725-e97f5ef5ec4b.json');
 const uuidv4 = require('uuid/v4');
+const num_seats = 37;
 
 let gl = {
     participants: 0,
@@ -96,7 +97,8 @@ app.use('/api/join', function(req, res) {
 
     res.json({
         id: guid,
-        seat: mySeat
+        seat: mySeat,
+        numSeats: num_seats
     });
 });
 

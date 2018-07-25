@@ -8,14 +8,17 @@
     <!-- include bootstrap -->
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/site.css">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
 
     <!-- Firebase App is always required and must be first -->
@@ -34,29 +37,23 @@
 
 <body>
     <div class="container">
-        <div class="card">
-            <img class="card-img-top" src="/rio_tinto_image.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Take a stand</h5>
-                <p class="card-text">Now you too can do the wave!.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">Participants:
-                <div id="app_participant_count"></div>
-            </div>
-        </div>
         <div class="row">
             <div class="col-12">
-                <div id="seat_0"></div>
-                <div id="seat_1"></div>
-                <div id="seat_2"></div>
-                <div id="seat_3"></div>
+                <div class="card">
+                    <div class="card-header">
+                        The Wave!
+                    </div>
+                    <img class="card-img-top" src="/rio_tinto_image.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title" id="app_participant_count">Take a stand</h5>
+                        <p class="card-text">Now you too can do the wave!</p>
+                        <div id="seats">
+                            <!-- Seats will appear here auto-matically -->
+                        </div>
+                        <a id="app_btn_stand" href="#" class="btn btn-primary"><i class="fa fa-male"></i> STAND UP</a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <a id="app_btn_stand" class="btn btn-default"><i class="fa fa-male"></i> STAND UP</a>
         </div>
     </div>
 
