@@ -31,9 +31,11 @@ $(document).ready(function() {
             console.log("State of seats has changed.");
 
             snapshot.forEach(function(childSnapshot) {
+                console.log(childSnapshot.key + " = ");
+                console.log(childSnapshot.val());
                 var childKey = childSnapshot.key;
                 var childData = childSnapshot.val();
-                updateSeat(parseInt(childKey), childData == '1');
+                updateSeat(parseInt(childKey), childData.standing == '1');
             });
         });
 

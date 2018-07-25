@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "sportshack-0725",
+  "private_key_id": "e97f5ef5ec4bbbfa9af62906079348fc124fbd36",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDSbJ50uE1woWxw\n2ZHcUHYnqa3iZiR3bYk3OWtpGhKnKUqicHFDtVnaNqLmLOob0ZlGidpOGOkDW/4a\niRDubwWHT0U7Iqdr8vM5VpE38W+Mytqvi8J0hkH58duKwpUTu/SDZ2BRZ+fBZHTw\nmCeq4AXBKMHmEpfPI67U5z39T19dixAJCnvZahwPsUBf9t33WPLmDpnZ2KMS/ZVi\nCYjUCJYN2P+6rH9wKRK0eVZfnbpAk5w4JWduhbbj/oDtHyEciFIFpY4sh9rKfjlH\n5rMgKjTuXwWG+sQO0VQlMB78DjegNlCnKOpHMQA8dwbizsI/6vj0synb9DTjGR2o\nAJ+GLJNbAgMBAAECggEAAbS7vCUvtjVjfwQPOK1g/S//pubpGMbHPAQNKOGl5mZh\nTTEthJJYfiUUllp63hWJm+wg3E07ZmQ9NSiIqJuMfJevRKwilgTMOq9xp0sfz7u9\nS3sN7TVBclim962y2QwcZAxXLZHIFpCimhNsZD2YuQOEPuybqnmW60b3Vlxpti/C\nAcEUrXH7icP7diiotntQP6sfsAD/gZtlz8PcOQcwZ6+g2IP/VYjMpQf+UEzN7Gjl\nTGr1+oGunk/s7wfMrLSkf91xzVbmMFtc0IrgtaM+FSoMYk7BR5gbKr3a+Ik9DUVv\nuWOUSfv4qm6TkNQife5pqGWdiP3CAPlpYBwNmwnr8QKBgQDy47h/1Qou3xEWFvdk\nE6/Tco4/erg8n5SXgYGlMokvgBeX+VWXmvtL0Sj469ERuz0xdRGo71KIom/jrVDy\nL+cFiKirOstw2PB4DePORZGZkeaeIzWT8UUpnvHuGDm5AN7RNSFSeIYCExLoeTT3\nO1WoH0zqWf/RhpJJiLX6ehHwbQKBgQDdyEoRSMtgn6wZ1fLZs3egbGqADTXV8D6N\nN2oF5JdxX86jwEpzdgm3OwQ759ulr/v6WZjaYIcdjmJUhILXonCJl/75X0ADhD01\n3p3A86xVyPlsrb2ticSnEIK+/rXbhrHrSy2meMfoxJOofvHPKWg5UReV8Mom8Yao\n/YTrgeSF5wKBgQCLMvTO1hJC8HZDWaAoS5wNq25YdQVXQQGQnpjlSwQSI+/hmfRy\nsVBpkBJSLhugdNVKHdSkI5wCUE2dhvuIAOn+YuZ/U2+6Wanes98lnPsnrtUjNfyD\nr9c6VixCjsGuBBCuhyt0rzvlvnasoqI3OlsJwf57pF6W/u+hkubwCLt1NQKBgQDC\nILAcgwBqOjl1f92Li1jZ1iw+m9GUyy6lg2zNbbLV7Uu97/H7MMX+Wa0yFpgfZnSE\nRWrTM4zxZRFS845n22rwNVhcxXAN4/GENrEVFPWzPTB+XXHa9e1pYr1fGyrp1fPk\nhjCWN8CcUX0CDuPwNklhakbf2x3HisAZKZfwYQk73wKBgCRBD/EHOobAXanZBOuT\nrpV00foSCoW5j6zzjqoId9SiMeNYUVzppoyTOHtnnTn40K431FNfIotf+pA69nmn\nA07ygs2oBLcBg6D+IzXOgvOW8NxlVcGYXhUFRvjcRRtXIfGA+2tBO0wsfKnwi0ut\nR4c8TYf3ljUFD8A9wvn7d74B\n-----END PRIVATE KEY-----\n",
+  "client_email": "sportshack-0725@appspot.gserviceaccount.com",
+  "client_id": "103733471595237559531",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sportshack-0725%40appspot.gserviceaccount.com"
+}
