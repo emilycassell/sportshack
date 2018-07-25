@@ -5,7 +5,11 @@ var winston = require('winston');
 var morgan = require('morgan');
 var admin = require('firebase-admin');
 var serviceAccount = require('./keys/sportshack-0725-e97f5ef5ec4b.json');
+const uuidv4 = require('uuid/v4');
 
+let gl = {
+    participants: 0
+};
 
 winston.log('info', 'Starting up the app server.');
 app.use(morgan('combined'));
@@ -23,6 +27,45 @@ app.get('/', function(req, res) {
 });
 
 app.use('/', express.static('public'))
+
+function addParticipant() {
+    gl.participants = gl.participants + 1;
+
+    try {
+        admin.database().ref('global_state').set({
+            participants: gl.participants
+        });
+    } catch (err) {
+        winston.error("Error updating participant count in Firebase");
+        winston.error(err);
+    }
+}
+
+// API METHODS
+app.use('/api/join', function(req, res) {
+    var guid = uuidv4();
+    res.json({
+        id: guid,
+        seat: 0
+    });
+    addParticipant();
+});
+
+// Called every n seconds by the client to keep participation alive.  Must pass in ID
+app.use('/api/touch/:id', function(req, res) {
+    try {
+        var id = req.params.id;
+        winston.info("Received touch from " + id);
+        var reply = {
+            participants: gl.participants
+        };
+        res.json(reply);
+    } catch (err) {
+        winston.error("Error processing touch request: " + req.url);
+        winston.error(err);
+    }
+});
+
 
 /*
 app.get('/', function(req, res) {
