@@ -15,6 +15,12 @@ app.get('/', function(req, res) {
     res.sendfile('default.html', { root: __dirname + "/public/views/home" });
 });
 
+app.get('/', function(req, res) {
+    res.sendfile('default.html', { root: __dirname + "/public/views/home" });
+});
+
+app.use('/', express.static('public'))
+
 /*
 app.get('/', function(req, res) {
     res.send('Hello World!');
