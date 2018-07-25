@@ -22,6 +22,7 @@
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/site.css">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -39,15 +40,30 @@
     <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-messaging.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-functions.js"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 </head>
 
 <body>
-    <p id="dothewave">Click here to do the wave</p>
     <svg width="500" height="300">  <!-- some SVG -->
 			<rect x="20" y="20" width="460" height="260" fill= "url(https://mdn.mozillademos.org/files/6457/mdn_logo_only_color.png)" height="200" width="200"/> 
 		</rect>
 		</svg>
     <circle></circle>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div id="seat_0"></div>
+                <div id="seat_1"></div>
+                <div id="seat_2"></div>
+                <div id="seat_3"></div>
+            </div>
+        </div>
+        <div class="row">
+            <a id="app_btn_stand" class="btn btn-default"><i class="fa fa-male"></i> STAND UP</a>
+        </div>
+    </div>
 
     <!-- Page Scripts -->
     <script src="/controllers/home/app.js"></script>
