@@ -44,6 +44,15 @@ function touchServer(id) {
     });
 }
 
+function onStandUp(id) {
+    $.ajax({
+        url: '/api/standup/' + id,
+        dataType: 'json'
+    }).done(function(response) {
+        console.log("Standup completed successfully.");
+    });
+}
+
 // Open the firebase when the page is ready
 $(document).ready(function() {
     try {
@@ -105,7 +114,7 @@ $(document).ready(function() {
 
         // Wire up standup button
         $("#app_btn_stand").click(function() {
-            alert("standing!");
+            onStandUp(gl_sportshack.id);
         });
 
     } catch (err) {
