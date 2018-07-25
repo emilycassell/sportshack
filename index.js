@@ -8,10 +8,11 @@ var serviceAccount = require('./keys/sportshack-0725-e97f5ef5ec4b.json');
 const uuidv4 = require('uuid/v4');
 
 let gl = {
-    participants: 0
+    participants: 0,
+    playerDict: {}
 };
 
-winston.log('info', 'Starting up the app server.');
+winston.log('info', '[Global] Starting up the app server.');
 app.use(morgan('combined'));
 
 // parsing
@@ -28,27 +29,75 @@ app.get('/', function(req, res) {
 
 app.use('/', express.static('public'))
 
-function addParticipant() {
+function removeParticipant(guid) {
+    try {
+        var player = gl.playerDict[guid];
+        if (player) {
+            delete gl.playerDict[guid];
+            gl.participants = gl.participants - 1;
+
+            // Update firebase with new participant count
+            admin.database().ref('global_state').set({
+                participants: gl.participants
+            });
+        }
+        winston.info("[removeParticipant] Removed player for lack of contact " + guid);
+    } catch (err) {
+        winston.error("Error removing participant");
+        winston.error(err);
+
+        return -1;
+    }
+
+}
+
+function processPlayerTimeout(guid) {
+    winston.info("[processPlayerTimeout] Timeout expired for user " + guid);
+    removeParticipant(guid);
+}
+
+function makeUserTouchTimeout(guid) {
+    return setTimeout(processPlayerTimeout.bind(null, guid), 20000);
+}
+
+function addParticipant(guid) {
     gl.participants = gl.participants + 1;
 
     try {
         admin.database().ref('global_state').set({
             participants: gl.participants
         });
+
+        // Capture the players ID and set the timeout for removal
+        var touchTimeout = makeUserTouchTimeout(guid);
+
+        gl.playerDict[guid] = {
+            id: guid,
+            timeout: touchTimeout
+        };
+
+        // Find a seat
+        return 0;
+
     } catch (err) {
         winston.error("Error updating participant count in Firebase");
         winston.error(err);
+
+        return -1;
     }
 }
+
+
 
 // API METHODS
 app.use('/api/join', function(req, res) {
     var guid = uuidv4();
+    var mySeat = addParticipant(guid);
+
     res.json({
         id: guid,
-        seat: 0
+        seat: mySeat
     });
-    addParticipant();
 });
 
 // Called every n seconds by the client to keep participation alive.  Must pass in ID
@@ -56,12 +105,21 @@ app.use('/api/touch/:id', function(req, res) {
     try {
         var id = req.params.id;
         winston.info("Received touch from " + id);
+
+        var player = gl.playerDict[id];
+        if (player) {
+            // Reset the timeout
+            clearTimeout(player.timeout);
+            player.timeout = makeUserTouchTimeout(player.id);
+        }
+
+        // Return participant count
         var reply = {
             participants: gl.participants
         };
         res.json(reply);
     } catch (err) {
-        winston.error("Error processing touch request: " + req.url);
+        winston.error("[api/touch] Error processing touch request: " + req.url);
         winston.error(err);
     }
 });
