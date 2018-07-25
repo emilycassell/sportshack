@@ -37,8 +37,20 @@ function removeParticipant(guid) {
     try {
         var player = gl.playerDict[guid];
         if (player) {
+
+            // Remove player from the players dictionary
             delete gl.playerDict[guid];
             gl.participants = gl.participants - 1;
+            winston.info("[removeParticipant] Removed participant from players list " + guid);
+
+            // Release the player's seat
+            for (var seatNum = 0; seatNum < num_seats; seatNum++) {
+                if (gl.seats[seatNum] === guid) {
+                    gl.seats[seatNum] = null;
+                    winston.info("[removeParticipant] Released seat " + seatNum.toString());
+                }
+                break;
+            }
 
             // Update firebase with new participant count
             admin.database().ref('global_state').set({
@@ -90,8 +102,17 @@ function addParticipant(guid) {
         var touchTimeout = makeUserTouchTimeout(guid);
 
         // Find a seat
-        var assigned_seat = 0;
+        var assigned_seat = -1;
+        for (var seatNum = 0; seatNum < num_seats; seatNum++) {
+            // Issue the seat to the player
+            if (gl.seats[seatNum] == null) {
+                gl.seats[seatNum] = guid;
 
+                // Record the assigned seat
+                assigned_seat = seatNum;
+                break;
+            }
+        }
 
         // Inserts a player object
         var player = {
