@@ -19,6 +19,7 @@ function updateParticipantCount(newCount) {
     console.log("NewCount = " + newCount);
     gl_sportshack.participants = newCount;
     console.log("Received updated participant count: " + gl_sportshack.participants.toString());
+    $("#app_participant_count").text(gl_sportshack.participants.toString());
 }
 
 function touchServer(id) {
